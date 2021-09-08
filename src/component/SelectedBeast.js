@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Image } from "react-bootstrap";
 
 class SelectedBeast extends Component {
   render() {
@@ -11,6 +11,10 @@ class SelectedBeast extends Component {
         </Modal.Header>
 
         <Modal.Body>
+          {/* <img alt={"title"} src={this.props.image_url} />  */}
+          <Image src={this.props.src} thumbnail style={{ height: "300px" }} />
+          <br />
+          Description: {this.props.description} <br />
           Keyword: {this.props.keyword} <br />
           Horns: {this.props.horns} <br />
         </Modal.Body>
