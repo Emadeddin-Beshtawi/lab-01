@@ -33,6 +33,8 @@ class App extends Component {
     this.state = {
       showModal: false,
       title: "",
+      src: "",
+      description: "",
       keyword: "",
       horns: "",
     };
@@ -47,10 +49,12 @@ class App extends Component {
 
   //////// handle-open function ////////
 
-  handleOpen = (title, keyword, horns) => {
+  handleOpen = (title, src, description, keyword, horns) => {
     this.setState({
       showModal: true,
       title: title,
+      src: src,
+      description: description,
       keyword: keyword,
       horns: horns,
     });
@@ -67,6 +71,8 @@ class App extends Component {
           handleClose={this.handleClose}
           showModal={this.state.showModal}
           title={this.state.title}
+          src={this.state.src}
+          description={this.state.description}
           keyword={this.state.keyword}
           horns={this.state.horns}
         />

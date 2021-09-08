@@ -12,9 +12,11 @@ class HornedBeasts extends Component {
 
   getHandleOpen = () => {
     let title = this.props.title;
+    let src = this.props.image_url;
+    let description = this.props.description;
     let keyword = this.props.keyword;
     let horns = this.props.horns;
-    this.props.handleOpen(title, keyword, horns);
+    this.props.handleOpen(title, src, description, keyword, horns);
   };
 
   animalVote = () => {
