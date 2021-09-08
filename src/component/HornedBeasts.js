@@ -1,81 +1,57 @@
-// import React, { Component } from 'react'
+import React, { Component } from "react";
 
-// class HornedBeasts extends Component {
-//     render() {
-//         return (
-
-//             <div>
-//                 <h4>Title: {this.props.title}</h4>
-//      {/* <img alt={'title'} image_url={this.props.image_url}/> */}
-
-//      <img src = {this.props.image_url} alt={'title'}/>
-
-//                 <p>
-//                     Description: {this.props.description} <br/>
-//                     Keyword: {this.props.keyword} <br/>
-//                     Horns: {this.props.horns}  <br/>
-
-//                 </p>
-//             </div>
-//         )
-//     }
-// }
-
-// export default HornedBeasts
-
-// ***********************************************//
-
-
-
-// ************ Lab-02 ******************* //
-
-import React, { Component } from 'react'
+import { Button, Col, Card } from "react-bootstrap";
 
 class HornedBeasts extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      initialValue: 0,
+    };
+  }
 
-    constructor(props) {
+  getHandleOpen = () => {
+    let title = this.props.title;
+    let keyword = this.props.keyword;
+    let horns = this.props.horns;
+    this.props.handleOpen(title, keyword, horns);
+  };
 
-        super(props);
-        this.state = {
-            initialValue: 0,
-        }
+  animalVote = () => {
+    this.setState({
+      initialValue: this.state.initialValue + 1,
+    });
+  };
 
+  render() {
+    return (
+      <Col>
+        <Card style={{ width: "18rem", margin: "20px" }}>
+          <Card.Img
+            alt="HornedBeast"
+            className="card-img-top"
+            title={this.props.title}
+            src={this.props.image_url}
+            onClick={this.handleOpen}
+          />
+          <Card.Body>
+            <Card.Title>{this.props.title}</Card.Title>
 
+            <Card.Text>
+              Description: {this.props.description} <br />
+              <button onClick={this.animalVote}>
+                Vote {this.state.initialValue}
+              </button>
+            </Card.Text>
 
-    }
-    animalVote = () => {
-
-        this.setState({
-            initialValue: this.state.initialValue + 1,
-
-        })
-
-
-    }
-
-    render() {
-        return (
-            <>
-    <h2>Title: {this.props.title} </h2>
-    <img alt={'title'} src={this.props.image_url}/> 
-<p>
-    
-Description: {this.props.description} <br/>    
-
-Keyword: {this.props.keyword} <br/>
-
-Horns: {this.props.horns}  <br/>
-
-<button onClick = {this.animalVote}>Vote {this.state.initialValue}</button>
-    
-</p>                
-
-
-                
-            </>
-        )
-    }
+            <Button variant="primary" onClick={this.getHandleOpen}>
+              Discover more
+            </Button>
+          </Card.Body>
+        </Card>
+      </Col>
+    );
+  }
 }
 
-export default HornedBeasts
-
+export default HornedBeasts;

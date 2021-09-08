@@ -1,34 +1,10 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-//////////// ************ //////////
-
 /////// <> </> called Fragment which contains multiple HTML elements /////////
 
 import { React, Component } from "react";
+
+///// We need to import Bootstrap ////////
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ///// We need to import supported Header Component ////////
 
@@ -42,20 +18,61 @@ import Footer from "./component/Footer";
 
 import Main from "./component/Main";
 
-///// Again, we need to import supported HornedBeasts Component ////////
+///// Again, we need to import supported NavBarCustome Component ////////
 
-import HornedBeasts from "./component/HornedBeasts";
+import NavBarCustome from "./component/NavBarCustome";
 
+import SelectedBeast from "./component/SelectedBeast";
+
+import data from "./component/data.json";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showModal: false,
+      title: "",
+      keyword: "",
+      horns: "",
+    };
+  }
+
+  /////// handle-clode function ///////////
+  handleClose = () => {
+    this.setState({
+      showModal: false,
+    });
+  };
+
+  //////// handle-open function ////////
+
+  handleOpen = (title, keyword, horns) => {
+    this.setState({
+      showModal: true,
+      title: title,
+      keyword: keyword,
+      horns: horns,
+    });
+  };
+
   render() {
-    return(
-    <>
-      <Header/>
-      <Main/>
-      <Footer/>
-    </>
-)
+    return (
+      <>
+        <NavBarCustome />
+        <Header />
+
+        <Main data={data} handleOpen={this.handleOpen} />
+        <SelectedBeast
+          handleClose={this.handleClose}
+          showModal={this.state.showModal}
+          title={this.state.title}
+          keyword={this.state.keyword}
+          horns={this.state.horns}
+        />
+        <Footer />
+      </>
+    );
   }
 }
-export default App
+export default App;
