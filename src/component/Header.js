@@ -10,7 +10,7 @@ class Header extends Component {
     render() {
         return (
             <>
-                <h1>New App for Lab 02</h1>
+                <h1>New App for Lab 03</h1>
             </>
         )
     }
