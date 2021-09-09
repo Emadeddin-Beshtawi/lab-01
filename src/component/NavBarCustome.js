@@ -16,7 +16,7 @@ class navBarCustome extends Component {
               height="30"
               className="d-inline-block align-top"
             />{" "} */}
-            Nab-bar for lab-03
+            Nab-bar for lab-04
           </Navbar.Brand>
         </Container>
       </Navbar>
