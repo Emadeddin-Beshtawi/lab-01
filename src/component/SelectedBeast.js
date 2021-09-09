@@ -1,27 +1,34 @@
 import React, { Component } from "react";
 
-import { Modal, Button, Image } from "react-bootstrap";
+///// We need to import Bootstrap ////////
 
-class SelectedBeast extends Component {
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import { Modal, Button, Card } from "react-bootstrap";
+
+export class SelectedBeast extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <Modal show={this.props.showModal} onHide={this.props.handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title> {this.props.title} </Modal.Title>
+          <Modal.Title>{this.props.e.title}</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
-          {/* <img alt={"title"} src={this.props.image_url} />  */}
-          <Image src={this.props.src} thumbnail style={{ height: "300px" }} />
-          <br />
-          Description: {this.props.description} <br />
-          Keyword: {this.props.keyword} <br />
-          Horns: {this.props.horns} <br />
+          <Card.Img
+            style={{ height: "300px" }}
+            src={this.props.e.image_url}
+            title={this.props.e.title}
+            alt={this.props.e.title}
+          />
+          <p>Description: {this.props.e.description}</p>
         </Modal.Body>
-
         <Modal.Footer>
           <Button variant="secondary" onClick={this.props.handleClose}>
-            Close
+            Exit
           </Button>
         </Modal.Footer>
       </Modal>

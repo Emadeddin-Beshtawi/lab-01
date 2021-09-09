@@ -1,32 +1,54 @@
 import React, { Component } from "react";
 
-///// To import HornedBeadts Component within Main Component /////
+///// Again, we need to import supported HornedBeasts Component ////////
 
 import HornedBeasts from "./HornedBeasts";
 
+///// We need to import Bootstrap ////////
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import { Row } from "react-bootstrap";
+
 class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.data = this.props.data;
+  }
+
+  select = (title) => {
+    this.props.select(title);
+  };
+
+  handleOpen = () => {
+    this.props.handleOpen();
+  };
+
   render() {
     return (
-      <div className="row" style={{ margin: " 20px 100px" }}>
-        <h1>Horned-Beast</h1>
-        {this.props.data.map((z, index) => {
-          {
-            console.log(index);
-          }
-
-          return (
+      <main>
+        <Row
+          style={{ margin: "auto 15px" }}
+          xs={1}
+          sm={2}
+          md={3}
+          lg={4}
+          className="g-4"
+        >
+          {this.props.data.map((y) => (
             <HornedBeasts
-              handleOpen={this.props.handleOpen}
-              image_url={z.image_url}
-              title={z.title}
-              description={z.description}
-              keyword={z.keyword}
-              key={index}
-              horns={z.horns}
+              key={y.title}
+              title={y.title}
+              src={y.image_url}
+              description={y.description}
+              select={this.select}
+              handleOpen={this.handleOpen}
+              keyword={y.keyword}
+              horns={y.horns}
             />
-          );
-        })}
-      </div>
+          ))}
+        </Row>
+      </main>
     );
   }
 }
